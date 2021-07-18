@@ -17,7 +17,7 @@
     "fix:lint": "eslint src --ext .ts --fix",
     "test": "run-s build test:*",
     "test:lint": "eslint src --ext .ts",
-    "test:prettier": "prettier \"src/**/*.ts\" --list-different",
+    "test:prettier": "prettier \"src/**/*.ts\" --list-different --write",
     "test:spelling": "cspell \"{README.md,.github/*.md,src/**/*.ts}\"",
     "test:unit": "nyc  --silent ava",
     "check-cli": "run-s test diff-integration-tests check-integration-tests",
@@ -42,7 +42,9 @@
     "node": ">=10"
   },
   "dependencies": {
-    "find-imports": "^1.1.0"
+    "find-imports": "^1.1.0",
+    "gitignore-globs": "^0.1.1",
+    "path-exists": "^4.0.0"
   },
   "devDependencies": {
     "@ava/typescript": "^1.1.1",
@@ -83,11 +85,11 @@
     "failFast": true,
     "timeout": "60s",
     "extensions": [
-			"ts"
-		],
-		"require": [
-			"esbuild-register"
-		],
+      "ts"
+    ],
+    "require": [
+      "esbuild-register"
+    ],
     "files": [
       "!build/module/**"
     ]

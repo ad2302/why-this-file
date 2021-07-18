@@ -1,6 +1,7 @@
 import path from 'path';
-
 import findImports from 'find-imports';
+import parseGlob from 'gitignore-globs';
+import pathExists from 'path-exists';
 
 export function findDependents(
   entryPath: string,
@@ -21,6 +22,15 @@ export function findDependents(
     path.dirname(relPath),
     path.basename(relPath, path.extname(relPath))
   );
+  let ignore = [];
+  const gitignorePath = path.join(cwd, '.gitignore');
+  const npmignores = path.join(cwd, '.npmignore');
+  if (pathExists.sync(gitignorePath)) {
+    ignore = ignore.concat(parseGlob(gitignorePath));
+  }
+  if (pathExists.sync(npmignores)) {
+    ignore = ignore.concat(parseGlob(npmignores));
+  }
   const cp = path.dirname(cwd);
   while (dir != cp) {
     if (path.basename(dir) === 'node_modules') {
@@ -31,7 +41,8 @@ export function findDependents(
       {
         absoluteImports: true,
         relativeImports: true,
-        packageImports: false
+        packageImports: false,
+        ignore,
       },
       dir
     );
