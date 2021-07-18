@@ -1,5 +1,5 @@
 import path from 'path';
-import findImports from 'find-imports';
+import findImports from '@ad2302/find-imports';
 import parseGlob from 'gitignore-globs';
 import pathExists from 'path-exists';
 

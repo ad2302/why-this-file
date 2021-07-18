@@ -42,7 +42,7 @@
     "node": ">=10"
   },
   "dependencies": {
-    "find-imports": "^1.1.0",
+    "@ad2302/find-imports": "^1.1.0",
     "gitignore-globs": "^0.1.1",
     "path-exists": "^4.0.0"
   },
