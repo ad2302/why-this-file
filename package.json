@@ -1,5 +1,5 @@
 {
-  "name": "why-this-file",
+  "name": "@ad2302/why-this-file",
   "version": "1.0.0",
   "description": "why this file exists",
   "main": "build/main/index.js",
